@@ -1,0 +1,44 @@
+.side-bar-container {
+  width: 18vw;
+  min-height: 100vh;
+  background-color: var(--light-primary-color);
+  position: fixed;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  .side-bar-img {
+    width: 85%;
+    aspect-ratio: 1/1;
+    border-radius: 250px;
+    object-fit: cover;
+    border: 10px solid #fff;
+
+    margin-bottom: 50px;
+  }
+
+  .side-bar-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--light-font-color);
+
+    gap: 24px;
+    font-size: 1.2rem;
+
+    li {
+      font-family: var(--custom-font-family);
+      user-select: none;
+      cursor: pointer;
+
+      transition: all 0.3s;
+
+      &:hover {
+        transform: scale(1.2);
+      }
+    }
+  }
+}

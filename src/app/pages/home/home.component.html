@@ -1,0 +1,358 @@
+<div class="main-content">
+  <section class="banner-section">
+    <div
+      class="banner-container"
+      [ngStyle]="{
+        'border-radius':
+          '0 0 ' + bannerBorderRadius + 'px ' + bannerBorderRadius + 'px'
+      }"
+    >
+      <img src="../../../assets/Victor-transparent.png" alt="" />
+      <p class="first-name">Victor</p>
+      <p class="surname">_Souza</p>
+    </div>
+  </section>
+  <section class="hobbies-section">
+    <div class="hobbie-text">
+      <h1>Hobbies</h1>
+    </div>
+    <div class="card-container">
+      <div
+        class="card card-tech"
+        [ngClass]="{ 'card-active': hobbieCardSelected === 'tech' }"
+      >
+        <div class="card-content">
+          <h3>{{ "hobbies.tech" | translate }}</h3>
+          <div class="empty-content"></div>
+          <div class="content-container">
+            <div class="card-content" (click)="setSelectedHobbieCard('tech')">
+              <p *ngIf="!hobbieCardSelected || hobbieCardSelected !== 'tech'">
+                {{ "hobbies.see_more" | translate }}
+              </p>
+              <div
+                class="card-information"
+                [ngClass]="{
+                  'card-information-active': hobbieCardSelected === 'tech'
+                }"
+              >
+                <ul>
+                  <li>
+                    <i class="mdi mdi-xml"></i
+                    >{{ "hobbies.tech_1" | translate }}
+                  </li>
+                  <li>
+                    <i class="mdi mdi-gamepad-variant"></i
+                    >{{ "hobbies.tech_2" | translate }}
+                  </li>
+                  <li>
+                    <i class="mdi mdi-trophy"></i
+                    >{{ "hobbies.tech_3" | translate }}
+                  </li>
+                  <li>
+                    <i class="mdi mdi-school"></i
+                    >{{ "hobbies.tech_4" | translate }}
+                  </li>
+                  <li>
+                    <i class="mdi mdi-account-voice"></i
+                    >{{ "hobbies.tech_5" | translate }}
+                  </li>
+                  <li>
+                    <i class="mdi mdi-sword-cross"></i
+                    >{{ "hobbies.tech_6" | translate }}
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="card card-art"
+        [ngClass]="{ 'card-active': hobbieCardSelected === 'art' }"
+      >
+        <div class="card-content">
+          <h3>{{ "hobbies.art" | translate }}</h3>
+          <div class="empty-content"></div>
+          <div class="content-container">
+            <div class="card-content" (click)="setSelectedHobbieCard('art')">
+              <p *ngIf="!hobbieCardSelected || hobbieCardSelected !== 'art'">
+                {{ "hobbies.see_more" | translate }}
+              </p>
+              <div
+                class="card-information"
+                [ngClass]="{
+                  'card-information-active': hobbieCardSelected === 'art'
+                }"
+              >
+                <ul>
+                  <li>
+                    <i class="mdi mdi-pencil"></i
+                    >{{ "hobbies.art_1" | translate }}
+                  </li>
+                  <li>
+                    <i class="mdi mdi-drama-masks"></i
+                    >{{ "hobbies.art_2" | translate }}
+                  </li>
+                  <li>
+                    <i class="mdi mdi-music"></i
+                    >{{ "hobbies.art_3" | translate }}
+                  </li>
+                  <li>
+                    <i class="mdi mdi-podcast"></i
+                    >{{ "hobbies.art_4" | translate }}
+                  </li>
+                  <li>
+                    <i class="mdi mdi-bank"></i
+                    >{{ "hobbies.art_5" | translate }}
+                  </li>
+                  <li>
+                    <i class="mdi mdi-draw"></i
+                    >{{ "hobbies.art_6" | translate }}
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="card card-sport"
+        [ngClass]="{ 'card-active': hobbieCardSelected === 'sport' }"
+      >
+        <div class="card-content">
+          <h3>{{ "hobbies.sport" | translate }}</h3>
+          <div class="empty-content"></div>
+          <div class="content-container">
+            <div class="card-content" (click)="setSelectedHobbieCard('sport')">
+              <p *ngIf="!hobbieCardSelected || hobbieCardSelected !== 'sport'">
+                {{ "hobbies.see_more" | translate }}
+              </p>
+              <div
+                class="card-information"
+                [ngClass]="{
+                  'card-information-active': hobbieCardSelected === 'sport'
+                }"
+              >
+                <ul>
+                  <li>
+                    <i class="mdi mdi-tennis"></i
+                    >{{ "hobbies.sport_1" | translate }}
+                  </li>
+                  <li>
+                    <i class="mdi mdi-medal"></i
+                    >{{ "hobbies.sport_2" | translate }}
+                  </li>
+                  <li>
+                    <i class="mdi mdi-weight-lifter"></i
+                    >{{ "hobbies.sport_3" | translate }}
+                  </li>
+                  <li>
+                    <i class="mdi mdi-bike"></i
+                    >{{ "hobbies.sport_4" | translate }}
+                  </li>
+                  <li>
+                    <i class="mdi mdi-heart-multiple"></i
+                    >{{ "hobbies.sport_5" | translate }}
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        [ngClass]="{ 'close-card-button-active': hobbieCardSelected }"
+        class="close-card-button"
+        (click)="setSelectedHobbieCard('')"
+      >
+        <i class="mdi mdi-close"></i>
+      </div>
+    </div>
+  </section>
+  <section class="art-tech-section">
+    <div class="art-section">
+      <div class="ink-stain"></div>
+      <div class="ink-container">
+        <div class="ink-stain-orbit">
+          <div class="ink-stain-mini ink-1"></div>
+          <div class="ink-stain-mini ink-2"></div>
+          <div class="ink-stain-mini ink-3"></div>
+          <div class="ink-stain-mini ink-4"></div>
+          <div class="ink-stain-mini ink-5"></div>
+          <div class="ink-stain-mini ink-6"></div>
+          <div class="ink-stain-mini ink-7"></div>
+          <div class="ink-stain-mini ink-8"></div>
+        </div>
+      </div>
+      <div class="art-text-container">
+        <p class="art-text-subtitle">
+          {{ "art_tech.art_subtitle" | translate }}
+        </p>
+        <p class="art-text-title">{{ "art_tech.art" | translate }}</p>
+      </div>
+    </div>
+    <div class="tech-background">
+      <div class="tech-section">
+        <div class="tech-cube-container">
+          <div class="tech-cube-row">
+            <div class="cube" id="cube-1">
+              <div class="face-1"></div>
+              <div class="face-2"></div>
+              <div class="face-3"></div>
+              <div class="face-4"></div>
+              <div class="face-5"></div>
+              <div class="face-6"></div>
+            </div>
+            <div class="cube" id="cube-2">
+              <div class="face-1"></div>
+              <div class="face-2"></div>
+              <div class="face-3"></div>
+              <div class="face-4"></div>
+              <div class="face-5"></div>
+              <div class="face-6"></div>
+            </div>
+          </div>
+          <div class="tech-cube-row">
+            <div class="cube" id="cube-3">
+              <div class="face-1"></div>
+              <div class="face-2"></div>
+              <div class="face-3"></div>
+              <div class="face-4"></div>
+              <div class="face-5"></div>
+              <div class="face-6"></div>
+            </div>
+            <div class="cube" id="cube-4">
+              <div class="face-1"></div>
+              <div class="face-2"></div>
+              <div class="face-3"></div>
+              <div class="face-4"></div>
+              <div class="face-5"></div>
+              <div class="face-6"></div>
+            </div>
+            <div class="cube" id="cube-5">
+              <div class="face-1"></div>
+              <div class="face-2"></div>
+              <div class="face-3"></div>
+              <div class="face-4"></div>
+              <div class="face-5"></div>
+              <div class="face-6"></div>
+            </div>
+          </div>
+        </div>
+        <div class="tech-text-container">
+          <p class="tech-text-subtitle">
+            {{ "art_tech.tech_subtitle" | translate }}
+          </p>
+          <p class="tech-text-title">{{ "art_tech.tech" | translate }}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="creativity-section" style="min-height: 100vh">
+    <div style="width: 100%; height: 100%">
+      <div class="cube-container">
+        <div class="cube-creativity">
+          <div class="face-creativity face-1-creativity"></div>
+          <div class="face-creativity face-2-creativity"></div>
+          <div class="face-creativity face-3-creativity"></div>
+          <div class="face-creativity face-4-creativity"></div>
+          <div class="face-creativity face-5-creativity"></div>
+          <div class="face-creativity face-6-creativity"></div>
+        </div>
+      </div>
+      <div class="ink-stain-container">
+        <div class="ink-stain-orbit-creativity">
+          <div class="ink-stain-mini ink-1"></div>
+          <div class="ink-stain-mini ink-2"></div>
+          <div class="ink-stain-mini ink-3"></div>
+          <div class="ink-stain-mini ink-4"></div>
+          <div class="ink-stain-mini ink-5"></div>
+          <div class="ink-stain-mini ink-6"></div>
+          <div class="ink-stain-mini ink-7"></div>
+          <div class="ink-stain-mini ink-8"></div>
+        </div>
+      </div>
+      <p class="creativity-text" style="top: 50px">
+        {{ "art_tech.and" | translate }}
+      </p>
+      <p class="creativity-text" style="bottom: 50px">
+        {{ "art_tech.creativity" | translate }}
+      </p>
+      <div class="circle">
+        <img
+          class="light-bulb"
+          style="position: absolute; width: 35vw"
+          src="../../../assets/light-bulb.png"
+        />
+        <div class="light-text">
+          <div class="light-sub-title">
+            {{ "art_tech.we_create" | translate }}
+          </div>
+          <p>{{ "art_tech.unique_projects" | translate }}</p>
+        </div>
+      </div>
+      <div class="projects-title-container">
+        <div class="dark-text">
+          <div class="dark-sub-title">
+            {{ "art_tech.we_create" | translate }}
+          </div>
+          <p>{{ "art_tech.unique_projects" | translate }}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="projects-section">
+    <div style="padding: 50px; font-size: 3em">
+      <h1 style="text-align: center; font-family: var(--title-font-family)">
+        {{ "projects.discover_projects" | translate }}
+      </h1>
+    </div>
+    <div class="projects-container">
+      <div class="project-card">
+        <img src="../../../assets/projects-img/night-cycle.png" alt="" />
+        <div class="hover-card">
+          <p>Night Cycle</p>
+          <button
+            (click)="openProjectDialog('Night Cycle')"
+            class="see-more-text"
+          >
+            {{ "projects.see_more" | translate }}
+          </button>
+        </div>
+      </div>
+      <div class="project-card">
+        <img src="../../../assets/projects-img/rainha.png" alt="" />
+        <div class="hover-card">
+          <p>Rainha do Sol</p>
+          <button
+            (click)="openProjectDialog('Rainha Do Sol')"
+            class="see-more-text"
+          >
+            {{ "projects.see_more" | translate }}
+          </button>
+        </div>
+      </div>
+      <div class="project-card">
+        <img src="../../../assets/projects-img/viperweb.png" alt="" />
+        <div class="hover-card">
+          <p>Viper Web</p>
+          <button
+            (click)="openProjectDialog('Vipery Web')"
+            class="see-more-text"
+          >
+            {{ "projects.see_more" | translate }}
+          </button>
+        </div>
+      </div>
+      <div class="project-card">
+        <img src="../../../assets/projects-img/The-OFF.png" alt="" />
+        <div class="hover-card">
+          <p>The OFF</p>
+          <button (click)="openProjectDialog('The OFF')" class="see-more-text">
+            {{ "projects.see_more" | translate }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

@@ -1,0 +1,48 @@
+<div class="dialog-container">
+  <div class="dialog-header">
+    <p>{{ currentProject.projectName }}</p>
+    <div class="close-button">
+      <i class="mdi mdi-close" (click)="closeDialog()"></i>
+    </div>
+  </div>
+  <div class="dialog-content">
+    <div style="aspect-ratio: 16/9; width: 65%; top: 0">
+      <video style="width: 100%" preload="metadata" controls>
+        <source
+          src="../../../assets/projects-video/Project-{{
+            currentProject.videoName
+          }}.mp4"
+          type="video/mp4"
+        />
+      </video>
+    </div>
+    <div class="project-details">
+      <p class="detail-title">{{ "projects.details" | translate }}</p>
+      <p class="detail-text">
+        {{ currentProject.details | translate }}
+      </p>
+      <div class="tech-stacks">
+        <p>{{ "projects.stacks" | translate }}</p>
+        <div class="stacks">
+          <img
+            *ngFor="let stackName of currentProject?.stacks"
+            matTooltip="{{ stackName }}"
+            src="../../../assets/tech-logo/{{ stackName }}.png"
+            alt=""
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="dialog-buttons">
+    <button (click)="openLiveLink()">
+      {{ "projects.liveLink" | translate }}
+    </button>
+    <button (click)="openGitLink()">
+      {{ "projects.codeLink" | translate }}
+    </button>
+    <p style="margin-left: auto; vertical-align: bottom">
+      {{ "projects.last_update" | translate }}: {{ currentProject?.lastUpdate }}
+    </p>
+  </div>
+</div>

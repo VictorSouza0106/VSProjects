@@ -1,0 +1,90 @@
+.dialog-container {
+  background-color: var(--very-dark-primary-color);
+  height: 100%;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+
+  color: white;
+
+  .dialog-header {
+    font-family: var(--title-font-family);
+    font-size: 2em;
+    padding-bottom: 12px;
+    display: flex;
+    justify-content: space-between;
+
+    i {
+      color: rgb(251, 78, 78);
+      cursor: pointer;
+    }
+  }
+
+  .dialog-content {
+    display: flex;
+    flex-grow: 1;
+
+    .project-details {
+      width: 60%;
+      padding-left: 24px;
+      max-height: 100%;
+      display: flex;
+      flex-direction: column;
+
+      .detail-title {
+        font-family: var(--title-font-family);
+        margin-bottom: 12px;
+        font-size: 1.5em;
+      }
+
+      .detail-text {
+        overflow: visible;
+      }
+
+      .tech-stacks {
+        margin-top: auto;
+
+        .stacks {
+          display: flex;
+          gap: 12px;
+          flex-wrap: wrap;
+        }
+
+        p {
+          margin-bottom: 8px;
+          font-family: var(--title-font-family);
+          font-size: 1.5em;
+        }
+
+        img {
+          height: 60px;
+          aspect-ratio: 1 / 1;
+          border: 1px solid var(--light-primary-color);
+          box-shadow: 0 0 4px var(--very-light-primary-color);
+          padding: 10px;
+          border-radius: 8px;
+        }
+      }
+    }
+  }
+
+  .dialog-buttons {
+    display: flex;
+    padding: 12px;
+    padding-bottom: 0;
+    margin-top: auto;
+    align-items: end;
+    font-size: 1.2em;
+
+    gap: 12px;
+
+    button {
+      padding: 12px;
+      background-color: var(--light-primary-color);
+      border-radius: 8px;
+
+      font-family: var(--title-font-family);
+      cursor: pointer;
+    }
+  }
+}
