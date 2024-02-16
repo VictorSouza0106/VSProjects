@@ -5,6 +5,7 @@ import { gsap } from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import { ProjectDetailComponent } from 'src/app/dialog/project-detail/project-detail.component';
 import { IProject } from 'src/app/interfaces/intefaces';
+import { WindowService } from 'src/app/services/window.service';
 
 type CubeFacesCords = {
   1: string;
@@ -69,15 +70,23 @@ const PROJECTS_INFORMATION: IProject[] = [
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  constructor(
-    private viewportScroller: ViewportScroller,
-    private dialog: MatDialog
-  ) {}
-
   public hobbieCardSelected: string = '';
   public bannerBorderRadius: number = 50;
 
+  public isMobile: boolean;
+  constructor(
+    private viewportScroller: ViewportScroller,
+    private dialog: MatDialog,
+    private windowService: WindowService
+  ) {
+    this.isMobile = window.innerWidth < this.windowService.MOBILE_WIDTH;
+  }
+
   ngOnInit(): void {
+    this.windowService.isMobile.subscribe((isMob) => {
+      this.isMobile = isMob;
+    });
+
     gsap.registerPlugin(ScrollTrigger);
 
     this.startScrollAnimations();
@@ -96,16 +105,67 @@ export class HomeComponent implements OnInit {
   }
 
   private animateHobbiesCards() {
-    gsap.to(['.card-tech', '.card-art', '.card-sport'], {
-      scrollTrigger: {
-        trigger: '.hobbies-section',
-        start: 'top center',
-        toggleActions: 'play',
-      },
-      stagger: 0.5,
-      y: 0,
-      opacity: 1,
-    });
+    if (this.isMobile) {
+      gsap.fromTo(
+        '.card-tech',
+        { x: '125%' },
+        {
+          scrollTrigger: {
+            trigger: '.hobbies-section',
+            start: 'top center',
+            toggleActions: 'play',
+          },
+          stagger: 0.5,
+          x: 0,
+          opacity: 1,
+        }
+      );
+
+      gsap.fromTo(
+        '.card-art',
+        { x: '-125%' },
+        {
+          scrollTrigger: {
+            trigger: '.hobbies-section',
+            start: '25% center',
+            toggleActions: 'play',
+          },
+          stagger: 0.5,
+          x: 0,
+          opacity: 1,
+        }
+      );
+
+      gsap.fromTo(
+        '.card-sport',
+        { x: '125%' },
+        {
+          scrollTrigger: {
+            trigger: '.hobbies-section',
+            start: '50% center',
+            toggleActions: 'play',
+          },
+          stagger: 0.5,
+          x: 0,
+          opacity: 1,
+        }
+      );
+    } else {
+      gsap.fromTo(
+        ['.card-tech', '.card-art', '.card-sport'],
+        { y: -350 },
+        {
+          scrollTrigger: {
+            trigger: '.hobbies-section',
+            start: 'top center',
+            toggleActions: 'play',
+          },
+          stagger: 0.5,
+          y: 0,
+          opacity: 1,
+        }
+      );
+    }
   }
 
   private animateCreativitySection() {
@@ -140,26 +200,42 @@ export class HomeComponent implements OnInit {
     );
 
     // Centralize Both icon (Cube / Ink Stain)
-    masterTimeLine.from('.cube-container', {
-      left: '20vw',
-      duration: 3,
-    });
-    masterTimeLine.from(
-      '.ink-stain-container',
-      {
-        right: '12vw',
+    if (this.isMobile) {
+      masterTimeLine.from('.cube-container', {
+        top: '25vh',
         duration: 3,
-      },
-      '<'
-    );
+      });
+      masterTimeLine.from(
+        '.ink-stain-container',
+        {
+          top: '75vh',
+          duration: 3,
+        },
+        '<'
+      );
+    } else {
+      masterTimeLine.from('.cube-container', {
+        left: '20vw',
+        duration: 3,
+      });
+      masterTimeLine.from(
+        '.ink-stain-container',
+        {
+          right: '12vw',
+          duration: 3,
+        },
+        '<'
+      );
+    }
 
     // Open the circle
     masterTimeLine.fromTo(
       '.circle',
-      { clipPath: 'circle(20%)' },
+      { clipPath: this.isMobile ? 'circle(12%)' : 'circle(20%)' },
       {
         backgroundColor: '#fcdf54',
         clipPath: 'circle(100%)',
+        duration: 5,
       }
     );
     masterTimeLine.to(
@@ -208,27 +284,39 @@ export class HomeComponent implements OnInit {
     let cubeAnimation = gsap.timeline();
 
     cubeAnimation.to('.face-1-creativity', {
-      transform: 'rotateY(90deg) translateZ(3vw)',
+      transform: this.isMobile
+        ? 'rotateY(90deg) translateZ(8vw)'
+        : 'rotateY(90deg) translateZ(3vw)',
     });
 
     cubeAnimation.to('.face-2-creativity', {
-      transform: 'rotateY(180deg) translateZ(3vw)',
+      transform: this.isMobile
+        ? 'rotateY(180deg) translateZ(8vw)'
+        : 'rotateY(180deg) translateZ(3vw)',
     });
 
     cubeAnimation.to('.face-3-creativity', {
-      transform: 'rotateY(270deg) translateZ(3vw)',
+      transform: this.isMobile
+        ? 'rotateY(270deg) translateZ(8vw)'
+        : 'rotateY(270deg) translateZ(3vw)',
     });
 
     cubeAnimation.to('.face-4-creativity', {
-      transform: 'rotateY(360deg) translateZ(3vw)',
+      transform: this.isMobile
+        ? 'rotateY(360deg) translateZ(8vw)'
+        : 'rotateY(360deg) translateZ(3vw)',
     });
 
     cubeAnimation.to('.face-5-creativity', {
-      transform: 'rotateX(90deg) translateZ(3vw)',
+      transform: this.isMobile
+        ? 'rotateX(90deg) translateZ(8vw)'
+        : 'rotateX(90deg) translateZ(3vw)',
     });
 
     cubeAnimation.to('.face-6-creativity', {
-      transform: 'rotateX(270deg) translateZ(3vw)',
+      transform: this.isMobile
+        ? 'rotateX(270deg) translateZ(8vw)'
+        : 'rotateX(270deg) translateZ(3vw)',
     });
 
     return cubeAnimation;
@@ -248,6 +336,12 @@ export class HomeComponent implements OnInit {
 
   public setSelectedHobbieCard(cardName: string) {
     this.hobbieCardSelected = cardName;
+
+    if (cardName != '' && this.isMobile) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
   }
 
   public randomizeCubeFace() {
@@ -277,8 +371,9 @@ export class HomeComponent implements OnInit {
     console.log(currentProject);
 
     this.dialog.open(ProjectDetailComponent, {
-      width: '80vw',
-      height: '80vh',
+      // width: '80vw',
+      maxWidth: this.isMobile ? '100vw' : '80vw',
+      height: this.isMobile ? '100vh' : '80vh',
       panelClass: 'flat-panel',
       data: currentProject,
     });

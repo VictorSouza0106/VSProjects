@@ -275,7 +275,10 @@
       <p class="creativity-text" style="top: 50px">
         {{ "art_tech.and" | translate }}
       </p>
-      <p class="creativity-text" style="bottom: 50px">
+      <p
+        class="creativity-text"
+        [ngStyle]="{ bottom: isMobile ? '75px' : '50px' }"
+      >
         {{ "art_tech.creativity" | translate }}
       </p>
       <div class="circle">
@@ -302,8 +305,8 @@
     </div>
   </section>
   <section class="projects-section">
-    <div style="padding: 50px; font-size: 3em">
-      <h1 style="text-align: center; font-family: var(--title-font-family)">
+    <div>
+      <h1 class="project-section-title">
         {{ "projects.discover_projects" | translate }}
       </h1>
     </div>

@@ -1,3 +1,5 @@
+@import "../../../scss/mixins.scss";
+
 .dialog-container {
   background-color: var(--very-dark-primary-color);
   height: 100%;
@@ -24,12 +26,35 @@
     display: flex;
     flex-grow: 1;
 
+    @include mobile-bkpoint {
+      flex-direction: column;
+    }
+
+    .video-container {
+      aspect-ratio: 16/9;
+      width: 65%;
+      top: 0;
+
+      @include mobile-bkpoint {
+        width: 100%;
+      }
+
+      video {
+        width: 100%;
+      }
+    }
+
     .project-details {
       width: 60%;
       padding-left: 24px;
       max-height: 100%;
       display: flex;
       flex-direction: column;
+
+      @include mobile-bkpoint {
+        width: 100%;
+        padding: 0;
+      }
 
       .detail-title {
         font-family: var(--title-font-family);
@@ -43,6 +68,10 @@
 
       .tech-stacks {
         margin-top: auto;
+
+        @include mobile-bkpoint {
+          margin-top: 16px;
+        }
 
         .stacks {
           display: flex;
@@ -77,6 +106,10 @@
     font-size: 1.2em;
 
     gap: 12px;
+
+    @include mobile-bkpoint {
+      margin: 12px 0;
+    }
 
     button {
       padding: 12px;

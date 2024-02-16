@@ -6,8 +6,8 @@
     </div>
   </div>
   <div class="dialog-content">
-    <div style="aspect-ratio: 16/9; width: 65%; top: 0">
-      <video style="width: 100%" preload="metadata" controls>
+    <div class="video-container">
+      <video preload="metadata" controls>
         <source
           src="https://vsprojects.s3.sa-east-1.amazonaws.com/Project-{{
             currentProject.videoName
@@ -41,7 +41,7 @@
     <button (click)="openGitLink()">
       {{ "projects.codeLink" | translate }}
     </button>
-    <p style="margin-left: auto; vertical-align: bottom">
+    <p *ngIf="!isMobile" style="margin-left: auto; vertical-align: bottom">
       {{ "projects.last_update" | translate }}: {{ currentProject?.lastUpdate }}
     </p>
   </div>

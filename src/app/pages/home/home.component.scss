@@ -7,7 +7,7 @@
   background-color: #080808;
 
   .banner-container {
-    height: 100dvh;
+    height: 100svh;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -27,6 +27,7 @@
       bottom: 0;
 
       object-fit: cover;
+      transition: all 3s;
 
       @include md-screen-and-down {
         height: 70dvh;
@@ -49,7 +50,7 @@
     user-select: none;
 
     @include md-screen-and-down {
-      font-size: 1.5em;
+      font-size: 1.4em;
     }
   }
 
@@ -90,6 +91,12 @@
   height: 950px;
   background-color: #080808;
   padding: 45px;
+  overflow: hidden;
+
+  @include mobile-bkpoint {
+    height: 1700px;
+    padding: 12px;
+  }
 
   .hobbie-text {
     display: flex;
@@ -97,6 +104,10 @@
     margin: 35px;
     font-family: var(--custom-font-family);
     font-size: 5rem;
+
+    @include mobile-bkpoint {
+      font-size: 3rem;
+    }
   }
 
   .card-container {
@@ -104,9 +115,14 @@
     width: 100%;
     height: 100%;
 
-    display: flex;
-    justify-content: space-around;
     padding: 0 45px;
+
+    @include mobile-bkpoint {
+      display: flex;
+      flex-direction: column;
+      padding: 0 10px;
+      height: 950px;
+    }
 
     .card {
       position: absolute;
@@ -117,13 +133,17 @@
       top: 0;
       z-index: 5;
       transition: all 1s;
-      transform: translate(0px, -350px);
       opacity: 0;
 
       background-position: center;
       object-fit: cover;
       background-size: cover;
       border: 10px solid #848484;
+
+      @include mobile-bkpoint {
+        width: 100%;
+        height: 50%;
+      }
     }
 
     .card-content {
@@ -138,8 +158,12 @@
       h3 {
         width: 100%;
         text-align: center;
-        padding: 15px 0 0 30px;
+        padding-top: 15px;
         transition: all 1s;
+
+        @include only-md-screen {
+          font-size: 0.8em;
+        }
       }
 
       .empty-content {
@@ -167,6 +191,10 @@
           cursor: pointer;
           transition: all 2s;
 
+          @include mobile-bkpoint {
+            padding: 16px;
+          }
+
           p {
             width: 100%;
             text-align: center;
@@ -185,6 +213,15 @@
             height: 0;
 
             overflow: hidden;
+
+            @include only-md-screen {
+              font-size: 0.8em;
+            }
+
+            @include mobile-bkpoint {
+              font-size: 0.5em;
+            }
+
             ul {
               margin-top: 24px;
               li {
@@ -213,12 +250,19 @@
       width: 100%;
       z-index: 10;
 
+      @include mobile-bkpoint {
+        position: fixed;
+        height: 100dvh;
+        top: 0 !important;
+      }
+
       .card-content {
         align-items: start;
 
         h3 {
           width: 5%;
           transition: all 1s;
+          padding-left: 30px;
         }
 
         .empty-content {
@@ -255,13 +299,20 @@
       right: 0;
       margin-left: auto;
       margin-right: auto;
-      top: 0;
+
+      @include mobile-bkpoint {
+        top: 55%;
+      }
 
       background-image: url(../../../assets/hobbie-cards/card-art-bg.png);
     }
     .card:nth-child(3) {
       right: 0;
       background-image: url(../../../assets/hobbie-cards/card-sport-bg.png);
+
+      @include mobile-bkpoint {
+        top: 110%;
+      }
     }
   }
 
@@ -287,6 +338,18 @@
     cursor: initial;
 
     transition: all 1s;
+
+    @include mobile-bkpoint {
+      top: 0;
+      right: 0;
+      position: fixed;
+      transform: translate(125%, -125%) scale(2);
+
+      i {
+        transform: translate(-50%, 50%);
+        font-size: 0.5em;
+      }
+    }
   }
 
   .close-card-button-active {
@@ -295,6 +358,10 @@
     cursor: pointer;
 
     transition: all 2s;
+
+    @include mobile-bkpoint {
+      transform: translate(50%, -50%) scale(2);
+    }
   }
 }
 
@@ -416,12 +483,28 @@
       .art-text-subtitle {
         font-size: 4rem;
         color: #ddb17b;
+
+        @include only-md-screen {
+          font-size: 3rem;
+        }
+
+        @include mobile-bkpoint {
+          font-size: 1rem;
+        }
       }
 
       .art-text-title {
         font-size: 10rem;
         color: #c16b02;
         font-family: var(--custom-font-family);
+
+        @include only-md-screen {
+          font-size: 8rem;
+        }
+
+        @include mobile-bkpoint {
+          font-size: 3rem;
+        }
       }
     }
   }
@@ -525,6 +608,14 @@
       .tech-text-subtitle {
         font-size: 4rem;
         color: var(--very-light-primary-color);
+
+        @include only-md-screen {
+          font-size: 3rem;
+        }
+
+        @include mobile-bkpoint {
+          font-size: 1rem;
+        }
       }
 
       .tech-text-title {
@@ -532,13 +623,21 @@
         letter-spacing: -5px;
         color: var(--light-primary-color);
         font-family: var(--custom-font-family);
+
+        @include only-md-screen {
+          font-size: 8rem;
+        }
+
+        @include mobile-bkpoint {
+          font-size: 3rem;
+        }
       }
     }
   }
 }
 
 .creativity-section {
-  min-height: 100vh;
+  min-height: 100svh;
   animation: colerfullBG infinite linear 10s;
   overflow: hidden;
   display: flex;
@@ -547,12 +646,17 @@
   z-index: -5;
 
   position: relative;
+  display: flex;
 
   .ink-stain-container {
     position: absolute;
     right: 50vw;
     top: 50vh;
     transform: translate(-50%, -50%);
+
+    @include mobile-bkpoint {
+      left: 50vw;
+    }
 
     .ink-stain-orbit-creativity {
       animation: spin 5s linear infinite;
@@ -620,12 +724,15 @@
       width: 6vw;
       background-size: cover;
       aspect-ratio: 1/1;
-      animation: co infinite linear 10s;
 
       position: relative;
       transform-style: preserve-3d;
       transform: rotateX(315deg) rotateY(45deg);
       transition: all 1.5s;
+
+      @include mobile-bkpoint {
+        width: 16vw;
+      }
 
       .face-1-creativity,
       .face-2-creativity,
@@ -653,26 +760,50 @@
       .face-1-creativity {
         background-image: url(../../../assets/cube-faces/face-1.png);
         transform: rotateY(90deg) translateZ(8vw);
+
+        @include mobile-bkpoint {
+          transform: rotateY(90deg) translateZ(16vw);
+        }
       }
       .face-2-creativity {
         background-image: url(../../../assets/cube-faces/face-2.png);
         transform: rotateY(180deg) translateZ(8vw);
+
+        @include mobile-bkpoint {
+          transform: rotateY(180deg) translateZ(16vw);
+        }
       }
       .face-3-creativity {
         background-image: url(../../../assets/cube-faces/face-3.png);
         transform: rotateY(270deg) translateZ(8vw);
+
+        @include mobile-bkpoint {
+          transform: rotateY(270deg) translateZ(16vw);
+        }
       }
       .face-4-creativity {
         background-image: url(../../../assets/cube-faces/face-4.png);
         transform: rotateY(360deg) translateZ(8vw);
+
+        @include mobile-bkpoint {
+          transform: rotateY(360deg) translateZ(16vw);
+        }
       }
       .face-5-creativity {
         background-image: url(../../../assets/cube-faces/face-5.png);
         transform: rotateX(90deg) translateZ(8vw);
+
+        @include mobile-bkpoint {
+          transform: rotateX(90deg) translateZ(16vw);
+        }
       }
       .face-6-creativity {
         background-image: url(../../../assets/cube-faces/face-6.png);
         transform: rotateX(270deg) translateZ(8vw);
+
+        @include mobile-bkpoint {
+          transform: rotateX(270deg) translateZ(16vw);
+        }
       }
     }
   }
@@ -685,19 +816,22 @@
     margin-right: auto;
     text-align: center;
     font-family: var(--custom-font-family);
-    font-size: 5rem;
+    font-size: 4.5rem;
+
+    @include mobile-bkpoint {
+      font-size: 2rem;
+    }
   }
 
   .circle {
     height: 100%;
     width: 100%;
-    background-color: aliceblue;
+    background-color: rgb(240, 248, 255);
     position: absolute;
     display: flex;
     justify-content: center;
     align-items: center;
     color: blue;
-    clip-path: circle(20%);
     z-index: 10;
 
     .light-bulb {
@@ -731,6 +865,10 @@
 
     p {
       font-size: 8em;
+
+      @include mobile-bkpoint {
+        font-size: 2.5em;
+      }
     }
   }
 
@@ -741,6 +879,10 @@
       font-family: var(--title-font-family);
       font-size: 3em;
       color: #a95501;
+
+      @include mobile-bkpoint {
+        font-size: 1.5em;
+      }
     }
 
     p {
@@ -755,6 +897,10 @@
       font-family: var(--title-font-family);
       font-size: 3em;
       color: var(--light-primary-color);
+
+      @include mobile-bkpoint {
+        font-size: 1.5em;
+      }
     }
 
     p {
@@ -778,6 +924,13 @@
 
   min-height: 100vh;
 
+  .project-section-title {
+    text-align: center;
+    font-family: var(--title-font-family);
+    padding: 50px;
+    font-size: 3em;
+  }
+
   .projects-container {
     display: flex;
     justify-content: center;
@@ -793,6 +946,10 @@
       transition: all 0.5s;
 
       width: 45vw;
+
+      @include mobile-bkpoint {
+        width: 95vw;
+      }
 
       img {
         width: 100%;
@@ -835,6 +992,11 @@
           border-radius: 8px;
           padding: 12px 24px;
           cursor: pointer;
+
+          @include mobile-bkpoint {
+            font-size: 0.5em;
+            padding: 6px 12px;
+          }
         }
       }
     }

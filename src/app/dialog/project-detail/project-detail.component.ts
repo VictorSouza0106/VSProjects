@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { IProject } from 'src/app/interfaces/intefaces';
+import { WindowService } from 'src/app/services/window.service';
 
 @Component({
   selector: 'app-project-detail',
@@ -8,13 +9,20 @@ import { IProject } from 'src/app/interfaces/intefaces';
   styleUrls: ['./project-detail.component.scss'],
 })
 export class ProjectDetailComponent implements OnInit {
+  public isMobile: boolean;
+
   constructor(
+    private windowService: WindowService,
     private dialogRef: MatDialogRef<ProjectDetailComponent>,
     @Inject(MAT_DIALOG_DATA) public currentProject: IProject
-  ) {}
+  ) {
+    this.isMobile = window.innerWidth < this.windowService.MOBILE_WIDTH;
+  }
 
   ngOnInit(): void {
-    console.log(this.currentProject);
+    this.windowService.isMobile.subscribe((isMob) => {
+      this.isMobile = isMob;
+    });
   }
 
   public closeDialog() {
