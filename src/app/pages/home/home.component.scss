@@ -1,3 +1,5 @@
+@import "../../../scss/mixins.scss";
+
 .banner-section {
   width: 100%;
 
@@ -5,6 +7,7 @@
   background-color: #080808;
 
   .banner-container {
+    height: 100dvh;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -20,6 +23,14 @@
     img {
       height: 100vh;
       z-index: 5;
+      position: absolute;
+      bottom: 0;
+
+      object-fit: cover;
+
+      @include md-screen-and-down {
+        height: 70dvh;
+      }
     }
   }
 
@@ -36,6 +47,10 @@
 
     transition: all 2s;
     user-select: none;
+
+    @include md-screen-and-down {
+      font-size: 1.5em;
+    }
   }
 
   .first-name {
@@ -48,6 +63,10 @@
     animation-delay: 0.8s;
     animation-timing-function: linear;
     animation-fill-mode: forwards;
+
+    @include md-screen-and-down {
+      top: 10dvh;
+    }
   }
 
   .surname {
@@ -60,6 +79,10 @@
     animation-delay: 0.8s;
     animation-timing-function: linear;
     animation-fill-mode: forwards;
+
+    @include md-screen-and-down {
+      top: 15dvh;
+    }
   }
 }
 

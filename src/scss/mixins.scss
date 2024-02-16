@@ -1,0 +1,48 @@
+/** Breakpoints */
+$bkpoint-sm: 576px;
+$bkpoint-mobile: 992px;
+$bkpoint-md: 1200px;
+$bkpoint-lg: 1400px;
+$bkpoint-xlg: 1600px;
+
+@mixin mobile-bkpoint {
+  @media screen and (max-width: #{$bkpoint-mobile}) {
+    @content;
+  }
+}
+
+@mixin only-md-screen {
+  @media (min-width: #{$bkpoint-mobile}) and (max-width: #{$bkpoint-md}) {
+    @content;
+  }
+}
+
+@mixin only-lg-screen {
+  @media (min-width: #{$bkpoint-md}) and (max-width: #{$bkpoint-lg}) {
+    @content;
+  }
+}
+
+@mixin only-xlg-screen {
+  @media (min-width: #{$bkpoint-lg}) and (max-width: #{$bkpoint-xlg}) {
+    @content;
+  }
+}
+
+@mixin md-screen-and-down {
+  @media screen and (max-width: #{$bkpoint-md}) {
+    @content;
+  }
+}
+
+@mixin lg-screen-and-down {
+  @media screen and (max-width: #{$bkpoint-lg}) {
+    @content;
+  }
+}
+
+@mixin xlg-screen-and-down {
+  @media screen and (max-width: #{$bkpoint-xlg}) {
+    @content;
+  }
+}
